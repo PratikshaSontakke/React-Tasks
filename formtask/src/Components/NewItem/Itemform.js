@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Itemform.css";
 
-const ExpenseForm = () => {
+const ItemForm = () => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredImage, setEnteredImage]= useState('');
   const [enteredPrice, setEnteredPrice]= useState('');
@@ -13,7 +13,7 @@ const ExpenseForm = () => {
   };
 
   const imageChangehandler= (event) => {
-    setEnteredImage(event.target.value);
+        setEnteredImage(event.target.files[0]);
   };
 
   const priceChangeHandler= (event) => {
@@ -64,4 +64,4 @@ const ExpenseForm = () => {
   );
 };
 
-export default ExpenseForm;
+export default ItemForm;

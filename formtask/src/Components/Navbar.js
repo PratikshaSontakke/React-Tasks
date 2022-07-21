@@ -12,7 +12,7 @@ return(
           Home
         </a>
         <button> Cart</button>
-        <button> Wishlist</button>
+        <button > Wishlist</button>
 
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
