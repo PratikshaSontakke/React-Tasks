@@ -74,10 +74,22 @@ li{
     justify-content: space-between;
     width: 50px;
 }
-input[type:text]: focus{
-    outline:none;
-}
+
 
 button:focus{
     outline: none;
+}
+
+.line-through{
+    text-decoration: line-through;
+    color: greenyellow;
+}
+.red{
+    color: red;
+}
+.blue{
+    color: dodgerblue;
+}
+.green{
+    color: yellowgreen;
 }

@@ -1,13 +1,16 @@
 import './App.css';
-import CreateTodo from "./components/CreateTodo"
-import Todolist from './components/Todolist';
+import CreateTodo from "./components/CreateTodo";
+
 
 function App() {
   return (
     <div className="outer-box"> 
     
-    <CreateTodo/> 
-    <Todolist/> </div>
+     <CreateTodo/> 
+     
+    
+     
+     </div>
     
   );
 }

@@ -22,7 +22,7 @@ function Todolist() {
           </li>
 
           <li>
-            <div> Grocery shopping  </div>
+            <div> Grocery shopping </div>
             <div className="icon">
               <div
                 style={{
@@ -84,14 +84,6 @@ function Todolist() {
               </div>
             </div>
           </li>
-
-
-
-
-
-
-
-
         </ul>
       </div>
     </div>
