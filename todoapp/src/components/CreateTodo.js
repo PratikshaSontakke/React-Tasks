@@ -8,6 +8,7 @@ function Createtodo() {
 
   const [todo, setTodo] = useState({ title: "", done: false });
   const [todoArr, setTodoArr] = useState([]);
+  const [currentTodo, setCurrentTodo]=useState({});
 
   // to get todo's from local storage
   let todos = localStorage.hasOwnProperty("todos")
@@ -66,6 +67,7 @@ function Createtodo() {
     })
   };
 
+  
   
 
   return (
