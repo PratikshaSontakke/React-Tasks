@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Itemform.css";
 
-const ExpenseForm = () => 
+const ItemForm = (props) => 
 {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredImage, setEnteredImage]= useState('');
@@ -35,7 +35,13 @@ const ExpenseForm = () =>
       price: enteredPrice,
       desc: enteredDesc
     };
-    console.log(itemData);
+
+    //console.log(itemData);
+    props.onSaveItemData(itemData);
+    setEnteredTitle('');
+    setEnteredImage('');
+    setEnteredDesc('');
+    setEnteredPrice('');
   };
 
 
@@ -44,19 +50,19 @@ const ExpenseForm = () =>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label> Image </label>
-          <input type="file" onChange={imageChangehandler}/>
+          <input type="file" value={enteredImage} onChange={imageChangehandler}/>
         </div>
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
-          <input type="number" onChange={priceChangeHandler} />
+          <input type="number" value={enteredPrice} onChange={priceChangeHandler} />
         </div>
         <div className="new-expense__control">
           <label>Description</label>
-          <input type="text" onChange={descChangeHandler}/>
+          <input type="text" value={enteredDesc} onChange={descChangeHandler}/>
         </div>
       </div>
       <div className="new-expense__control">
@@ -66,4 +72,4 @@ const ExpenseForm = () =>
   );
 };
 
-export default ExpenseForm;
+export default ItemForm;
