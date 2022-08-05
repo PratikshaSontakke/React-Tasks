@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Todolist from "./Todolist";
 import swal from "sweetalert";
 //import "../styles/Styles.css";
@@ -8,7 +8,6 @@ function Createtodo() {
 
   const [todo, setTodo] = useState({ title: "", done: false });
   const [todoArr, setTodoArr] = useState([]);
-  const [currentTodo, setCurrentTodo]=useState({});
 
   // to get todo's from local storage
   let todos = localStorage.hasOwnProperty("todos")
@@ -36,7 +35,7 @@ function Createtodo() {
         localStorage.setItem("todos", JSON.stringify(todos));
         setTodo({ title: "", done: false });
       } else {
-        swal( "Please write todo first", "error");
+        swal("Please write todo first", "error");
       }
     }
   };
@@ -51,24 +50,28 @@ function Createtodo() {
     }
   };
   //function for deleting todo
-  const deleteTodo=(i)=>{
+  const deleteTodo = (i) => {
     swal({
-
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this file!",
       buttons: true,
-      dangerMode: true
-    }).then(res=>{
-      if (res){
-        todos.splice(i, 1)
-        localStorage.setItem('todos', JSON.stringify(todos))
-        setTodoArr(todos)
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        todos.splice(i, 1);
+        localStorage.setItem("todos", JSON.stringify(todos));
+        setTodoArr(todos);
       }
-    })
+    });
   };
 
-  
-  
+  useEffect(() => {
+    console.log("inside effect");
+
+    return () => {
+      console.log("inside cleanup");
+    };
+  }, []);
 
   return (
     <>
@@ -96,7 +99,10 @@ function Createtodo() {
           </button>
         </div>
       </div>
-      <Todolist todoArr={todoArr} completeTodo={completeTodo} deleteTodo={deleteTodo}
+      <Todolist
+        todoArr={todoArr}
+        completeTodo={completeTodo}
+        deleteTodo={deleteTodo}
       />
     </>
   );
