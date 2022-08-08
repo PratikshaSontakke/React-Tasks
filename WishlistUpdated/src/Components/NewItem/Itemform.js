@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import "./Itemform.css";
 
 const ItemForm = (props) => 
 {
+  const testInputRef=useRef();
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredImage, setEnteredImage]= useState('');
   const [enteredPrice, setEnteredPrice]= useState('');
   const [enteredDesc, setEnteredDesc]= useState('');
+
+  const [testReff, setTestReff]= useState('React Test');
+
+  const testChangeHandler=(event)=>{
+    
+    setTestReff(event.target.value);
+  }
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -28,12 +36,14 @@ const ItemForm = (props) =>
   const submitHandler = (event) =>{
 
     event.preventDefault();
+    console.log(testInputRef.current.value);
 
     const itemData={
       title: enteredTitle,
       image: enteredImage,
       price: enteredPrice,
-      desc: enteredDesc
+      desc: enteredDesc,
+      test: testReff
     };
 
     //console.log(itemData);
@@ -42,6 +52,7 @@ const ItemForm = (props) =>
     setEnteredImage('');
     setEnteredDesc('');
     setEnteredPrice('');
+    setTestReff('');
   };
 
 
@@ -67,6 +78,10 @@ const ItemForm = (props) =>
       </div>
       <div className="new-expense__control">
         <button type="submit">Add Item</button>
+    
+    <div className="new-expense__control"> <label> React Test </label>
+    <input type="text" value={testReff} onChange={testChangeHandler}  readOnly disabled ref={testInputRef}></input></div>
+
       </div>
     </form>
   );

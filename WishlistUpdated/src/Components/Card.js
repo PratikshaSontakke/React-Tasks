@@ -1,4 +1,5 @@
 import Wishlist from "./Wishlist";
+import React from 'react';
 //import WishList from './Wishlist';
 var Card = (props) => {
   return (

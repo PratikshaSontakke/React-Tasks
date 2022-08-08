@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Card from "./Card";
 import ItemList from "./Items";
+import React from 'react';
+
 const ShowItem = (props) => {
   var [selectedItem, setSelectedItem] = useState({});
   var [products, setProducts] = useState(ItemList);

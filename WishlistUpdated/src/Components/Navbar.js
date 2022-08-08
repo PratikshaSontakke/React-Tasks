@@ -1,4 +1,5 @@
-import './Head.css'
+import './Head.css';
+import React from 'react'; 
 function Navbar(){
 return(
 <>
