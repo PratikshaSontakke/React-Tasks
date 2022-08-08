@@ -4,19 +4,13 @@ import "./Itemform.css";
 
 const ItemForm = (props) => 
 {
-  const testInputRef=useRef();
+  const testInputRef=useRef('React test');
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredImage, setEnteredImage]= useState('');
   const [enteredPrice, setEnteredPrice]= useState('');
   const [enteredDesc, setEnteredDesc]= useState('');
 
-  const [testReff, setTestReff]= useState('React Test');
-
-  const testChangeHandler=(event)=>{
-    
-    setTestReff(event.target.value);
-  }
-
+  
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
@@ -36,14 +30,20 @@ const ItemForm = (props) =>
   const submitHandler = (event) =>{
 
     event.preventDefault();
+
+    if (enteredTitle.trim() === "" || enteredImage.trim() === "" || enteredDesc.trim() === "" || enteredPrice.trim()=== ""){
+      alert("Form fields cannot be empty");
+      return;
+    }
     console.log(testInputRef.current.value);
+    const testReact = testInputRef.current.value;
 
     const itemData={
       title: enteredTitle,
       image: enteredImage,
       price: enteredPrice,
       desc: enteredDesc,
-      test: testReff
+      test: testReact
     };
 
     //console.log(itemData);
@@ -52,7 +52,7 @@ const ItemForm = (props) =>
     setEnteredImage('');
     setEnteredDesc('');
     setEnteredPrice('');
-    setTestReff('');
+    
   };
 
 
@@ -61,7 +61,7 @@ const ItemForm = (props) =>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label> Image </label>
-          <input type="file" value={enteredImage} onChange={imageChangehandler}/>
+          <input type="file" accept="image/*" value={enteredImage} onChange={imageChangehandler}/>
         </div>
         <div className="new-expense__control">
           <label>Title</label>
@@ -79,8 +79,8 @@ const ItemForm = (props) =>
       <div className="new-expense__control">
         <button type="submit">Add Item</button>
     
-    <div className="new-expense__control"> <label> React Test </label>
-    <input type="text" value={testReff} onChange={testChangeHandler}  readOnly disabled ref={testInputRef}></input></div>
+    <div className="new-expense__control"> 
+    <input type="text" value="React test" readOnly disabled ref={testInputRef}></input></div>
 
       </div>
     </form>

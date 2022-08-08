@@ -12,8 +12,7 @@ return(
         <a href="#home" class="active">
           Home
         </a>
-        <button> Cart</button>
-        <button > Wishlist</button>
+        
 
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
