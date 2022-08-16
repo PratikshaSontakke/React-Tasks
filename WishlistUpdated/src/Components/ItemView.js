@@ -5,7 +5,8 @@ import React from 'react';
 
 const ShowItem = (props) => {
   var [selectedItem, setSelectedItem] = useState({});
-  var [products, setProducts] = useState(ItemList);
+  // var [products, setProducts] = useState(ItemList);
+  
   const cardVisible = (obj) => {
     props.setDelete(true);
     console.log(obj);
@@ -13,12 +14,15 @@ const ShowItem = (props) => {
     console.log(selectedItem);
   };
   const DeleteItemFromProduct = (Id) => {
-    setProducts((prev) => {
+    props.setProducts((prev) => {
       return prev.filter((val, index) => {
         return Id !== index;
       });
     });
   };
+
+ 
+
   return (
     <>
       {props.deleteicon === true ? (
@@ -59,7 +63,7 @@ const ShowItem = (props) => {
         ""
       )}
       <div
-        style={{
+      style={{
           display: "flex",
           zIndex: "-1",
           width: "100%",
@@ -69,7 +73,8 @@ const ShowItem = (props) => {
           flexWrap: "wrap ",
         }}
       >
-        {products.map((val, index) => {
+        
+        {props.products.map((val, index) => {
           return (
             <Card
               deleteFunc={cardVisible}
@@ -78,6 +83,7 @@ const ShowItem = (props) => {
               dltIcon={props.deleteiconforCard}
               uniqProductId={index}
               deleteFromscreen={DeleteItemFromProduct}
+              
             />
           );
         })}

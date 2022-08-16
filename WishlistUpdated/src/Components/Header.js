@@ -1,18 +1,16 @@
 import { useState } from "react";
 import "./Head.css";
-import Navbar from "./Navbar";
-//import Card from "./Card";
+import { Route, Link, Switch} from "react-router-dom";
+import ItemForm from "../Components/NewItem/Itemform";
 import ShowItem from "./ItemView";
 //import WishList from './Wishlist';
 import Delete from "./Delete";
-import React from 'react';
+import React from "react";
+import ItemList from "./Items";
+import Hero from "./Hero";
 
 
-
-
-const Header = () => {
-
-    
+const Header = (props) => {
   const [deleteIcon, setDeleteIcon] = useState(false);
   const [deleteIconForCard, setDeleteIconForCard] = useState(false);
   const SelectAllCards = () => {
@@ -21,15 +19,22 @@ const Header = () => {
   };
 
   return (
-    <>
-      <Navbar />
-      <Delete cardSelect={SelectAllCards} />
-
-      <ShowItem
+    <>    
+    <Hero/>
+      
+      <Switch> 
+   <Route path="/">  <Delete cardSelect={SelectAllCards} />
+          <ShowItem
+        products={props.products}
+        setProducts={props.setProducts}
         deleteicon={deleteIcon}
         setDelete={setDeleteIcon}
         deleteiconforCard={deleteIconForCard}
-      />
+       
+      /> </Route></Switch>
+      
+        
+      
     </>
   );
 };

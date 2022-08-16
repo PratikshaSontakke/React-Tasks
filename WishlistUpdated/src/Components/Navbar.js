@@ -1,31 +1,29 @@
-import './Head.css';
-import React from 'react'; 
-function Navbar(){
-return(
-<>
-<div>
-      <div className="header">
-        <h1> Cosmetics </h1>{" "}
-      </div>
+import "./Head.css";
+import React from "react";
+import Header from "./Header";
+import { Route, Link } from "react-router-dom";
 
-      <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">
-          Home
-        </a>
-        
 
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-
+function Navbar() {
+  return (
+    <>
+       <div className="header">
+          <h1> Cosmetics </h1>
+          <div class="topnav" id="myTopnav">
+        <Link to="/" class="active">
+          {" "}
+          Home{" "}
+        </Link>
+        <Link to="/shop">Shop</Link>
+        <Link to="/cart">Cart</Link>
+        <Link to="/admin">Admin</Link>
         <i class="fa fa-bars"></i>
-      </div>
-    </div>
 
-</>
-)
+        <button> Add new item</button> 
+      </div>
+        
+        </div>
+    </>
+  );
 }
 export default Navbar;
-
-
-
