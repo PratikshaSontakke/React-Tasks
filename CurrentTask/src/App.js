@@ -16,15 +16,14 @@ function App() {
   var [products, setProducts] = useState(ItemList);
   
 
-  const addItemHandler = (ItemList) => {
-    console.log("In app.js");
-    console.log(ItemList);
-    setProducts((state) => {
-      return state.concat([ItemList]);
-    });
-  };
-
-  
+  // const addItemHandler = (ItemList) => {
+  //   console.log("In app.js");
+  //   console.log(ItemList);
+  //   setProducts((state) => {
+  //     return state.concat([ItemList]);
+  //   });
+  // };
+ 
 
   return (
     <>
@@ -32,7 +31,8 @@ function App() {
 
       <Switch>
         <Route path="/admin">
-          <NewItem onAddItem={addItemHandler} />
+          {/* <NewItem onAddItem={addItemHandler} /> */}
+          <NewItem/>
         </Route>
 
         <Route path="/shop" exact>

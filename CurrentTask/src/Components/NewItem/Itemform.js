@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import ItemList from "../Items";
 import "./Itemform.css";
 
 const ItemForm = (props) => {
@@ -14,9 +15,19 @@ const ItemForm = (props) => {
     setEnteredTitle(event.target.value);
   };
 
+  // const imageChangehandler = (event) => {
+
+  //   setEnteredImage(event.target.value);
+  // };
+
   const imageChangehandler = (event) => {
-    setEnteredImage(event.target.value);
+    var fread = new FileReader();
+    fread.readAsDataURL(event.target.files[0]);
+    fread.onloadend = function (event) {
+      setEnteredImage(event.target.result);
+    };
   };
+
 
   const priceChangeHandler = (event) => {
     setEnteredPrice(event.target.value);
@@ -27,6 +38,22 @@ const ItemForm = (props) => {
   };
   const submitHandler = (event) => {
     event.preventDefault();
+
+    ItemList.push({
+      title: enteredTitle,
+      image: enteredImage,
+      price: enteredPrice,
+      desc: enteredDesc
+    })
+    alert ("Item added to home and shop");
+
+    const itemData = {
+      title: enteredTitle,
+      image: enteredImage,
+      price: enteredPrice,
+      desc: enteredDesc,
+      test: testReact,
+    };
 
     if (
       enteredTitle.trim() === "" ||
@@ -41,19 +68,9 @@ const ItemForm = (props) => {
     console.log(testInputRef.current.value);
     const testReact = testInputRef.current.value;
 
-    
-
-    const itemData = {
-      title: enteredTitle,
-      image: enteredImage,
-      price: enteredPrice,
-      desc: enteredDesc,
-      test: testReact,
-    };
-    alert ("Item added to home and shop");
-
+   
     //console.log(itemData);
-    props.onSaveItemData(itemData);
+    //props.onSaveItemData(itemData);
     setEnteredTitle("");
     setEnteredImage("");
     setEnteredDesc("");
@@ -69,16 +86,16 @@ const ItemForm = (props) => {
             <input
               type="file"
               accept="image/*"
-              value={enteredImage}
+              //value={enteredImage}
               onChange={imageChangehandler}
             />
-            <img id="output" />
+            {/* <img id="output" /> */}
           </div>
           <div className="new-expense__control">
             <label>Title</label>
             <input
               type="text"
-              value={enteredTitle}
+              //value={enteredTitle}
               onChange={titleChangeHandler}
             />
           </div>
@@ -86,7 +103,7 @@ const ItemForm = (props) => {
             <label>Amount</label>
             <input
               type="number"
-              value={enteredPrice}
+              //value={enteredPrice}
               onChange={priceChangeHandler}
             />
           </div>
@@ -94,7 +111,7 @@ const ItemForm = (props) => {
             <label>Description</label>
             <input
               type="text"
-              value={enteredDesc}
+             // value={enteredDesc}
               onChange={descChangeHandler}
             />
           </div>
