@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./Head.css";
-import { Route, Link, Switch} from "react-router-dom";
-import ItemForm from "../Components/NewItem/Itemform";
+import { Route, Switch} from "react-router-dom";
+
 import ShowItem from "./ItemView";
 //import WishList from './Wishlist';
 import Delete from "./Delete";
 import React from "react";
-import ItemList from "./Items";
-import Cart from "./Cart";
+
+
 
 
 const Header = (props) => {

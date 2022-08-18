@@ -30,8 +30,8 @@ function App() {
       <Navbar> </Navbar>
 
       <Switch>
-        <Route path="/admin">
-          {/* <NewItem onAddItem={addItemHandler} /> */}
+       
+        <Route path="/admin/:email?" >
           <NewItem/>
         </Route>
 

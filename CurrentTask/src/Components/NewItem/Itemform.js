@@ -1,29 +1,33 @@
-import React, { useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useParams, useLocation} from "react-router-dom";
 import ItemList from "../Items";
 import "./Itemform.css";
 
-const ItemForm = (props) => {
-  const testInputRef = useRef("React test");
+const ItemForm = () => {
+  const testInputRef = useRef("React Test");
+  const input = useParams();
 
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredImage, setEnteredImage] = useState("");
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDesc, setEnteredDesc] = useState("");
+  const [value, setValue] = useState();
 
-  const titleChangeHandler = (event) => {
+  console.log(input);
+  useEffect(() => {
+  setValue( input.email);
+  // String(new URLSearchParams(new URL(window.location.href).search).get("q"))
+  // );
+    }, [input.email]);
+
+    const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-  };
-
-  // const imageChangehandler = (event) => {
-
-  //   setEnteredImage(event.target.value);
-  // };
+  }
 
   const imageChangehandler = (event) => {
     var fread = new FileReader();
     fread.readAsDataURL(event.target.files[0]);
-    fread.onloadend = function (event) {
+    fread.onloadend = function(event) {
       setEnteredImage(event.target.result);
     };
   };
@@ -36,6 +40,7 @@ const ItemForm = (props) => {
   const descChangeHandler = (event) => {
     setEnteredDesc(event.target.value);
   };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -43,17 +48,21 @@ const ItemForm = (props) => {
       title: enteredTitle,
       image: enteredImage,
       price: enteredPrice,
-      desc: enteredDesc
-    })
-    alert ("Item added to home and shop");
-
-    const itemData = {
-      title: enteredTitle,
-      image: enteredImage,
-      price: enteredPrice,
       desc: enteredDesc,
-      test: testReact,
-    };
+    });
+
+    //console.log(testInputRef.current.value)
+
+    if (input.email === undefined) 
+    {
+      testInputRef.current.value = "React Test";
+      //setValue("React Test")
+    } 
+    else {
+      testInputRef.current.value = input.email;
+    }
+    //console.log(testInputRef.current.value);
+    alert("Item added to home and shop");
 
     if (
       enteredTitle.trim() === "" ||
@@ -65,10 +74,8 @@ const ItemForm = (props) => {
       return;
     }
 
-    console.log(testInputRef.current.value);
-    const testReact = testInputRef.current.value;
+    //console.log(testInputRef.current.value);
 
-   
     //console.log(itemData);
     //props.onSaveItemData(itemData);
     setEnteredTitle("");
@@ -111,26 +118,21 @@ const ItemForm = (props) => {
             <label>Description</label>
             <input
               type="text"
-             // value={enteredDesc}
+              // value={enteredDesc}
               onChange={descChangeHandler}
             />
           </div>
         </div>
         <div className="new-expense__control">
           <button type="submit">Add Item</button>
-
+</div>
           <div className="new-expense__control">
-            <input
-              type="text"
-              value="React test"
-              readOnly
-              disabled
-              //ref={testInputRef}
-            ></input>
+            <input type="text" value={value} ref={testInputRef} disabled></input>
           </div>
-        </div>
+        
       </form>
-      <img src={enteredImage} alt="" height="100" width="100" />
+      {enteredImage && <img src={enteredImage} alt="" height="100" width="100" /> }
+
     </>
   );
 };

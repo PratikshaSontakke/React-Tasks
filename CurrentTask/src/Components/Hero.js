@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 function Hero() {
   return (
     <div>
-    <img src= {Background} width="1500" height="500"/>
+    <img src= {Background} alt = "" width="1500" height="500"/>
     
     
     <div class="hero-image">
