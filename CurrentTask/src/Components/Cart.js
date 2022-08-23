@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import CartItem from "./CartItem";
 import React from "react";
 var arr;

@@ -5,7 +5,7 @@ function NotFound() {
   return (
     <div> <div class='center'>
         
-        <img src="/notfound404.jpg" height="510" width="1000"/>
+        <img src="/notfound404.jpg" height="510" width="1000" alt = "" />
          
     </div></div>
   )

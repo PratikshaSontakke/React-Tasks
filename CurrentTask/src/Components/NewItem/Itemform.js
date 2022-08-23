@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useParams, useLocation} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import ItemList from "../Items";
 import "./Itemform.css";
 
@@ -13,11 +13,10 @@ const ItemForm = () => {
   const [enteredDesc, setEnteredDesc] = useState("");
   const [value, setValue] = useState();
 
+  //logic for disabled field where it takes user's email
   console.log(input);
   useEffect(() => {
   setValue( input.email);
-  // String(new URLSearchParams(new URL(window.location.href).search).get("q"))
-  // );
     }, [input.email]);
 
     const titleChangeHandler = (event) => {
@@ -56,12 +55,12 @@ const ItemForm = () => {
     if (input.email === undefined) 
     {
       testInputRef.current.value = "React Test";
-      //setValue("React Test")
+      
     } 
     else {
       testInputRef.current.value = input.email;
     }
-    //console.log(testInputRef.current.value);
+    
     alert("Item added to home and shop");
 
     if (
@@ -74,10 +73,7 @@ const ItemForm = () => {
       return;
     }
 
-    //console.log(testInputRef.current.value);
-
-    //console.log(itemData);
-    //props.onSaveItemData(itemData);
+    
     setEnteredTitle("");
     setEnteredImage("");
     setEnteredDesc("");
@@ -131,7 +127,7 @@ const ItemForm = () => {
           </div>
         
       </form>
-      {enteredImage && <img src={enteredImage} alt="" height="100" width="100" /> }
+      <img src={enteredImage} alt="" height="100" width="100" /> 
 
     </>
   );

@@ -1,10 +1,10 @@
-import Wishlist from "./Wishlist";
 import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
-//import WishList from './Wishlist';
+// import { CartContext } from "../context/CartContext";
 var Card = (props) => {
   var idOfProd = props.idOfItemInArr;
   const [buttonText, setButtonText] = useState('Add to cart');
+
   return (
     <>
       <div className="card">

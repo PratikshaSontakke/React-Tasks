@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Card from "./Card";
-import ItemList from "./Items";
-import React from 'react';
+import React from "react";
+//import { ProductContext } from "../context/ProductContext";
+
 
 const ShowItem = (props) => {
-  var [selectedItem, setSelectedItem] = useState({});
-  // var [products, setProducts] = useState(ItemList);
+
+  //const {products, setProducts} = useContext(ProductContext);
+  const [selectedItem, setSelectedItem] = useState({});
   
   const cardVisible = (obj) => {
     props.setDelete(true);
@@ -13,6 +15,7 @@ const ShowItem = (props) => {
     setSelectedItem(obj);
     console.log(selectedItem);
   };
+
   const DeleteItemFromProduct = (Id) => {
     props.setProducts((prev) => {
       return prev.filter((val, index) => {
@@ -40,7 +43,7 @@ const ShowItem = (props) => {
           <h5 className="card-title">{selectedItem.title}</h5>
           <h5 className="size">{selectedItem.desc}</h5>
           <h5 className="price">{selectedItem.price}</h5>
-        
+
           <svg
             onClick={() => {
               props.setDelete(false);
@@ -60,29 +63,26 @@ const ShowItem = (props) => {
       ) : (
         ""
       )}
+
       <div
-      style={{
+        style={{
           display: "flex",
+          justifyContent: "space-around",
           zIndex: "-1",
           width: "100%",
           height: "100%",
-          flexDirection: "row",
-         
         }}
       >
-        
         {props.products.map((val, index) => {
           return (
             <Card
-              
               item={val}
               key={index}
               dltIcon={props.deleteiconforCard}
               uniqProductId={index}
               deleteFromscreen={DeleteItemFromProduct}
-              idOfItemInArr = {index}
+              idOfItemInArr={index}
               addedToCart={props.addToCart}
-              
             />
           );
         })}

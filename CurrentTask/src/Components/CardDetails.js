@@ -9,7 +9,7 @@ const CardDetails=()=>{
         <>
       <div style={{marginTop:"12px",display:"flex"}}>
       <div style={{marginLeft:"12px"}}>
-      <img src={productInfo.image} style={{width:"300%",height:"50vh"}}/>
+      <img src={productInfo.image} width="300%" height="50vh" alt=""/>
       <h1 >{productInfo.title}</h1>
       <h2 >{productInfo.desc}</h2>
       <h3 >{productInfo.price}</h3>

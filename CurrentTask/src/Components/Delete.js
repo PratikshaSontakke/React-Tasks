@@ -1,5 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
 const Delete = (props) => {
+  
+
     return (
       <>
         <div
