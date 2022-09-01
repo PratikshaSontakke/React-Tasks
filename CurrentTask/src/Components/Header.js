@@ -2,7 +2,7 @@ import { useState,useContext } from "react";
 import "./Head.css";
 import { Route, Switch } from "react-router-dom";
 import ShowItem from "./ItemView";
-import Delete from "./Delete";
+import Delete from "./card/Delete";
 import React from "react";
 import {CartContext} from "../context/CartContext";
 //import {ProductContext} from "../context/ProductContext";
@@ -25,12 +25,12 @@ const SelectAllCards = () => {
   else setDeleteIconForCard(false);
 };
 
-  const addCartData = (item) => {
-    const updatedValue = [...cartArr, item];
-    setCartArr(updatedValue);
-    localStorage.setItem("users", JSON.stringify(updatedValue));
-    alert(` Items added To Cart`);
-  };
+  // const addCartData = (item) => {
+  //   const updatedValue = [...cartArr, item];
+  //   setCartArr(updatedValue);
+  //   localStorage.setItem("users", JSON.stringify(updatedValue));
+  //   alert(` Items added To Cart`);
+  // };
 
   return (
     <>
@@ -41,12 +41,12 @@ const SelectAllCards = () => {
           {" "}
           <Delete cardSelect={SelectAllCards} />
           <ShowItem
-            products={products}
+           products={products}
             setProducts={setProducts}
             deleteicon={deleteIcon}
             setDelete={setDeleteIcon}
             deleteiconforCard={deleteIconForCard}
-            addToCart={addCartData}
+            //addToCart={addCartData}
           />
         </Route>
        

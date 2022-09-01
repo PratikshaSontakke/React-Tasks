@@ -1,7 +1,8 @@
 import React from 'react';
 import "../index.css";
 
-function NotFound() {
+function NotFound(e) {
+  e.preventDefault();
   return (
     <div> <div class='center'>
         

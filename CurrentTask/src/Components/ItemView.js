@@ -1,25 +1,20 @@
-import { useState, useContext } from "react";
-import Card from "./Card";
+import { useState, useEffect } from "react";
+import Card from "./card/Card.js";
 import React from "react";
-//import { ProductContext } from "../context/ProductContext";
-
+import { getProducts } from "../helper/api-helper";
 
 const ShowItem = (props) => {
+  const [products, setProducts] = useState([]);
+    useEffect(() => {
+    getProducts().then((data) => setProducts(data));
+  }, []);
 
-  //const {products, setProducts} = useContext(ProductContext);
   const [selectedItem, setSelectedItem] = useState({});
-  
-  const cardVisible = (obj) => {
-    props.setDelete(true);
-    console.log(obj);
-    setSelectedItem(obj);
-    console.log(selectedItem);
-  };
 
-  const DeleteItemFromProduct = (Id) => {
+  const DeleteItemFromProduct = (id) =>{
     props.setProducts((prev) => {
       return prev.filter((val, index) => {
-        return Id !== index;
+        return id !== index;
       });
     });
   };
@@ -64,16 +59,8 @@ const ShowItem = (props) => {
         ""
       )}
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          zIndex: "-1",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        {props.products.map((val, index) => {
+      <div className="cardContainer">
+        {products.map((val, index) => {
           return (
             <Card
               item={val}
