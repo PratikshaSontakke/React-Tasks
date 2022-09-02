@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import { getSingleProduct } from "../../helper/api-helper";
 
 var Card = (props) => {
   const idOfProd = props.item.id;
@@ -53,9 +52,8 @@ var Card = (props) => {
             setButtonText("Added to cart");
           }}
         >
-          {" "}
           {buttonText}
-        </button>{" "}
+        </button>
       </div>
     </div>
   );

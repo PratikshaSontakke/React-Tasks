@@ -1,0 +1,41 @@
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    background-color: white;
+    padding: 10px;
+    margin-left: 250px;
+   
+  }
+    .grid-container > div {
+   background-color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    height: 170px;
+    width: 300px;
+  }
+  
+  .item1 {
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  .btn-group button {
+    background-color: grey; /* Green background */
+    border: 1px solid grey;
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: center; /* Float the buttons side by side */
+    width: 500px;
+    font-size: larger;
+        
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color:white;
+  }
+  
+  

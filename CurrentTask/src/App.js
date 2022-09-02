@@ -11,23 +11,27 @@ import FallbackError from "./FallbackError";
 
 const App = () => {
   const [products, setProducts] = useState();
+  const [singleProd, setSingleProd] = useState([]);
 
-      return (
+  return (
     <>
       <div>
         <FallbackError>
-        <Navbar />
-           <Switch>
+          <Navbar />
+          <Switch>
             <Route path="/admin/:email?">
               <NewItem />
             </Route>
-           
+
             <Route path="/shop" exact>
               <Header products={products} setProducts={setProducts} />
             </Route>
 
             <Route path="/shop/cardDetails/:idOfProd" exact>
-              <CardDetails/>
+              <CardDetails
+                singleProd={singleProd}
+                setSingleProd={setSingleProd}
+              />
             </Route>
 
             <Route path="/" exact>

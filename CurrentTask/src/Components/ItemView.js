@@ -1,23 +1,32 @@
 import { useState, useEffect } from "react";
 import Card from "./card/Card.js";
 import React from "react";
-import { getProducts } from "../helper/api-helper";
+import { getProducts, getDeleteProduct } from "../helper/api-helper";
 
 const ShowItem = (props) => {
   const [products, setProducts] = useState([]);
-    useEffect(() => {
+
+  useEffect(() => {
     getProducts().then((data) => setProducts(data));
   }, []);
 
   const [selectedItem, setSelectedItem] = useState({});
 
-  const DeleteItemFromProduct = (id) =>{
-    props.setProducts((prev) => {
-      return prev.filter((val, index) => {
-        return id !== index;
+  const DeleteItemFromProduct = (id) => {
+    fetch(`https://fakestoreapi.com/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        const deletedProducts = products.filter((product) => product.id !== id);
+        setProducts(deletedProducts);
       });
-    });
   };
+  // props.setProducts((prev) => {
+  //   return prev.filter((val, index) => {
+  //     return id !== index;
+  //   });
+  // });
 
   return (
     <>
@@ -60,15 +69,15 @@ const ShowItem = (props) => {
       )}
 
       <div className="cardContainer">
-        {products.map((val, index) => {
+        {products.map((p) => {
           return (
             <Card
-              item={val}
-              key={index}
+              item={p}
+              key={p.id}
               dltIcon={props.deleteiconforCard}
-              uniqProductId={index}
+              uniqProductId={p.id}
               deleteFromscreen={DeleteItemFromProduct}
-              idOfItemInArr={index}
+              idOfItemInArr={p.id}
               addedToCart={props.addToCart}
             />
           );
