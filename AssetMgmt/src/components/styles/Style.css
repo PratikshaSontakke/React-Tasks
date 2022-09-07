@@ -30,6 +30,7 @@
     float: center; /* Float the buttons side by side */
     width: 500px;
     font-size: larger;
+    margin-left: 300px;
         
   }
   

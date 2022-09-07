@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Style.css";
 import Header from "../utils/assets/Header";
 import Sidenav from "../utils/assets/Sidenav";
@@ -54,8 +55,8 @@ function AdminAssetPageSW() {
         </Button>{" "}
       </div>
       <div className="btn-group">
-        <button>Software</button>
-        <button>Hardware</button>
+        <Button>Software</Button>
+        <Button>Hardware</Button>
       </div>
       <div
         style={{

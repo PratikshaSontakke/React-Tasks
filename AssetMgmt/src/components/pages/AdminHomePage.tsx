@@ -11,9 +11,13 @@ function AdminHomePage() {
       <Sidenav />
       <TextField
         label="search here..."
-        sx={{ width: 500, height: 100, margin: "3% auto" }}
+        sx={{
+          width: 500,
+          height: 100,
+          margin: "3% auto",
+          marginLeft: "30%",
+        }}
       ></TextField>
-
       <div className="grid-container">
         <div className="grid-item">
           Total Assets <br />
