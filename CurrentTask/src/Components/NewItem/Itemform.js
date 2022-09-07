@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ItemList from "../Items";
 import "./Itemform.css";
 
@@ -16,21 +16,20 @@ const ItemForm = () => {
   //logic for disabled field where it takes user's email
   console.log(input);
   useEffect(() => {
-  setValue( input.email);
-    }, [input.email]);
+    setValue(input.email);
+  }, [input.email]);
 
-    const titleChangeHandler = (event) => {
+  const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-  }
+  };
 
   const imageChangehandler = (event) => {
     var fread = new FileReader();
     fread.readAsDataURL(event.target.files[0]);
-    fread.onloadend = function(event) {
+    fread.onloadend = function (event) {
       setEnteredImage(event.target.result);
     };
   };
-
 
   const priceChangeHandler = (event) => {
     setEnteredPrice(event.target.value);
@@ -52,17 +51,6 @@ const ItemForm = () => {
 
     //console.log(testInputRef.current.value)
 
-    if (input.email === undefined) 
-    {
-      testInputRef.current.value = "React Test";
-      
-    } 
-    else {
-      testInputRef.current.value = input.email;
-    }
-    
-    alert("Item added to home and shop");
-
     if (
       enteredTitle.trim() === "" ||
       enteredImage.trim() === "" ||
@@ -73,7 +61,24 @@ const ItemForm = () => {
       return;
     }
 
-    
+    if (input.email === undefined) {
+      testInputRef.current.value = "React Test";
+    } else {
+      testInputRef.current.value = input.email;
+    }
+
+    alert("Item added to home and shop");
+
+    // if (
+    //   enteredTitle.trim() === "" ||
+    //   enteredImage.trim() === "" ||
+    //   enteredDesc.trim() === "" ||
+    //   enteredPrice.trim() === ""
+    // ) {
+    //   alert("Form fields cannot be empty");
+    //   return;
+    // }
+
     setEnteredTitle("");
     setEnteredImage("");
     setEnteredDesc("");
@@ -119,16 +124,16 @@ const ItemForm = () => {
             />
           </div>
         </div>
+
         <div className="new-expense__control">
           <button type="submit">Add Item</button>
-</div>
-          <div className="new-expense__control">
-            <input type="text" value={value} ref={testInputRef} disabled></input>
-          </div>
-        
-      </form>
-      <img src={enteredImage} alt="" height="100" width="100" /> 
+        </div>
 
+        <div className="new-expense__control">
+          <input type="text" value={value} ref={testInputRef} disabled></input>
+        </div>
+      </form>
+      <img src={enteredImage} alt="" height="100" width="100" />
     </>
   );
 };

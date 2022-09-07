@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import Card from "./card/Card.js";
 import React from "react";
-import { getProducts, getDeleteProduct } from "../helper/api-helper";
+import { getProducts } from "../helper/api-helper";
 
-const ShowItem = (props) => {
+const ItemView = (props) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     getProducts().then((data) => setProducts(data));
   }, []);
 
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedItem] = useState({});
 
   const DeleteItemFromProduct = (id) => {
     fetch(`https://fakestoreapi.com/products/${id}`, {
@@ -87,4 +87,4 @@ const ShowItem = (props) => {
   );
 };
 
-export default ShowItem;
+export default ItemView;

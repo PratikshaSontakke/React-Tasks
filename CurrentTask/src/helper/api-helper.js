@@ -4,7 +4,7 @@ const getProducts = async () => {
   return result;
 };
 const getSingleProduct = async (id) => {
-  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const response = await fetch(`https://fakestoreapi.com/products/6`);
   const result = await response.json();
   return result;
 };

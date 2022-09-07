@@ -1,6 +1,4 @@
-//import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import ItemList from "../Items";
 import { getSingleProduct } from "../../helper/api-helper";
 
 const CardDetails = (props) => {
