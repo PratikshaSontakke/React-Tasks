@@ -3,14 +3,15 @@ import { Route, Switch } from "react-router-dom";
 import ItemView from "./ItemView";
 import Delete from "./card/Delete";
 import React from "react";
-//import ItemList from "./Items";
 import FallbackError from "../FallbackError";
 
-const Header = () => {
-  //const [products, setProducts] = useState(ItemList);
-
+const Header = (props) => {
   const [deleteIcon, setDeleteIcon] = useState(false);
   const [deleteIconForCard, setDeleteIconForCard] = useState(false);
+  const { setProducts, products } = props;
+  // useEffect(() => {
+  //   getProducts().then((data) => setProducts(data));
+  // }, []);
 
   const SelectAllCards = () => {
     if (deleteIconForCard === false) setDeleteIconForCard(true);
@@ -28,6 +29,8 @@ const Header = () => {
               deleteicon={deleteIcon}
               setDelete={setDeleteIcon}
               deleteiconforCard={deleteIconForCard}
+              products={products}
+              setProducts={setProducts}
             />
           </Route>
         </Switch>

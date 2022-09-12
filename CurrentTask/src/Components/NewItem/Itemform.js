@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ItemList from "../Items";
 import "./Itemform.css";
 
-const ItemForm = () => {
+const ItemForm = (props) => {
   const testInputRef = useRef("React Test");
   const input = useParams();
+  const { products, setProducts } = props;
+  const { setFormDetails } = props;
+  console.log(props);
 
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredImage, setEnteredImage] = useState("");
@@ -14,7 +16,6 @@ const ItemForm = () => {
   const [value, setValue] = useState();
 
   //logic for disabled field where it takes user's email
-  console.log(input);
   useEffect(() => {
     setValue(input.email);
   }, [input.email]);
@@ -42,14 +43,13 @@ const ItemForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    ItemList.push({
+    const obj = {
+      id: products.length + 1,
       title: enteredTitle,
       image: enteredImage,
       price: enteredPrice,
       desc: enteredDesc,
-    });
-
-    //console.log(testInputRef.current.value)
+    };
 
     if (
       enteredTitle.trim() === "" ||
@@ -66,7 +66,8 @@ const ItemForm = () => {
     } else {
       testInputRef.current.value = input.email;
     }
-
+    setFormDetails([obj]);
+    setProducts([...products, obj]);
     alert("Item added to home and shop");
 
     // if (
@@ -91,37 +92,19 @@ const ItemForm = () => {
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label> Image </label>
-            <input
-              type="file"
-              accept="image/*"
-              //value={enteredImage}
-              onChange={imageChangehandler}
-            />
-            {/* <img id="output" /> */}
+            <input type="file" accept="image/*" onChange={imageChangehandler} />
           </div>
           <div className="new-expense__control">
             <label>Title</label>
-            <input
-              type="text"
-              //value={enteredTitle}
-              onChange={titleChangeHandler}
-            />
+            <input type="text" onChange={titleChangeHandler} />
           </div>
           <div className="new-expense__control">
             <label>Amount</label>
-            <input
-              type="number"
-              //value={enteredPrice}
-              onChange={priceChangeHandler}
-            />
+            <input type="number" onChange={priceChangeHandler} />
           </div>
           <div className="new-expense__control">
             <label>Description</label>
-            <input
-              type="text"
-              // value={enteredDesc}
-              onChange={descChangeHandler}
-            />
+            <input type="text" onChange={descChangeHandler} />
           </div>
         </div>
 

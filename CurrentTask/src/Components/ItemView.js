@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Card from "./card/Card.js";
 import React from "react";
-import { getProducts } from "../helper/api-helper";
 
 const ItemView = (props) => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    getProducts().then((data) => setProducts(data));
-  }, []);
+  const { products, setProducts } = props;
 
   const [selectedItem] = useState({});
 
@@ -22,11 +17,6 @@ const ItemView = (props) => {
         setProducts(deletedProducts);
       });
   };
-  // props.setProducts((prev) => {
-  //   return prev.filter((val, index) => {
-  //     return id !== index;
-  //   });
-  // });
 
   return (
     <>

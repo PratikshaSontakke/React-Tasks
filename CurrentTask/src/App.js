@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Components/Header";
 import NewItem from "./Components/NewItem/NewItem";
 import { Route, Switch } from "react-router-dom";
@@ -8,10 +8,20 @@ import NotFound from "./Components/NotFound";
 import CardDetails from "./Components/card/CardDetails.js";
 import Cart from "./Components/cart/Cart";
 import FallbackError from "./FallbackError";
+import { getProducts } from "./helper/api-helper";
 
 const App = () => {
-  const [products, setProducts] = useState();
   const [singleProd, setSingleProd] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [formDetails, setFormDetails] = useState([]);
+
+  useEffect(() => {
+    if (!formDetails.length) {
+      getProducts().then((data) => setProducts([...data, ...formDetails]));
+    } else {
+      getProducts().then((data) => setProducts(data));
+    }
+  }, []);
 
   return (
     <>
@@ -20,7 +30,12 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route path="/admin/:email?">
-              <NewItem />
+              <NewItem
+                products={products}
+                setProducts={setProducts}
+                formDetails={formDetails}
+                setFormDetails={setFormDetails}
+              />
             </Route>
 
             <Route path="/shop" exact>
