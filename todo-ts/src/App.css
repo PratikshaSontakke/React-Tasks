@@ -1,0 +1,13 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #747f8b;
+  font-family: cursive;
+}
+.heading{
+  text-align: center;
+  font-size: 40px;
+}

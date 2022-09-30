@@ -34,8 +34,8 @@ const ItemView = (props) => {
           }}
         >
           <img src={selectedItem.image} alt="" />
-          <h5 className="card-title">{selectedItem.title}</h5>
-          <h5 className="size">{selectedItem.desc}</h5>
+          <h5 className="card-title">{selectedItem.title.slice(0, 10)}</h5>
+          <h5 className="size">{selectedItem.desc.slice(0, 20)}</h5>
           <h5 className="price">{selectedItem.price}</h5>
 
           <svg

@@ -46,6 +46,8 @@ const App = () => {
               <CardDetails
                 singleProd={singleProd}
                 setSingleProd={setSingleProd}
+                products={products}
+                setProducts={setProducts}
               />
             </Route>
 

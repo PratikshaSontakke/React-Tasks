@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getSingleProduct } from "../../helper/api-helper";
 
 const CardDetails = (props) => {
-  // const param = useParams();
-  //const productInfo = ItemList[param.idOfProd];
-
+  const { products, setProducts } = props;
   const [singleProd, setSingleProd] = useState([]);
 
   useEffect(() => {
@@ -16,9 +14,10 @@ const CardDetails = (props) => {
       <div style={{ marginTop: "12px", display: "flex" }}>
         <div style={{ marginLeft: "12px" }}>
           <img src={singleProd.image} height="auto" max-width="50%" alt="" />
-          <h1>{singleProd.title}</h1>
-          <h2>{singleProd.desc}</h2>
-          <h3>{singleProd.price}</h3>
+          <h2> Title: {singleProd.title}</h2>
+          <h5>Desc: {singleProd.description}</h5>
+          <h5> Price: {singleProd.price}</h5>
+          <h5> Category: {singleProd.category}</h5>
         </div>
       </div>
     </>
